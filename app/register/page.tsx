@@ -7,9 +7,9 @@ const page: FC<pageProps> = ({}) => {
   return (
     <div className="grid h-screen w-screen place-items-center bg-slate-800 px-4 text-sm font-medium">
       <div className="w-full max-w-md rounded-lg bg-slate-700/30 shadow">
-        <form className="p-4 md:p-5 lg:p-6 text-white">
+        <form className="p-4 md:p-5 lg:p-6 text-white ">
           <span className="block font-normal text-4xl mb-8 text-center">
-            Log in to your account
+            Create your account
           </span>
 
           <div className="grid gap-y-3">
@@ -28,7 +28,7 @@ const page: FC<pageProps> = ({}) => {
                   fill="#cbd5e1"
                 />
               </svg>
-              Sign in with Github
+              Sign up with Github
             </button>
             <button className="flex items-center justify-center gap-x-2 rounded-md border border-slate-600 bg-slate-700 py-3 px-4 text-slate-300 transition hover:text-purple-400">
               <svg
@@ -45,7 +45,7 @@ const page: FC<pageProps> = ({}) => {
                   fill="#cbd5e1"
                 />
               </svg>
-              Sign in with Google
+              Sign up with Google
             </button>
           </div>
           <div className="my-3 flex items-center px-3">
@@ -61,17 +61,15 @@ const page: FC<pageProps> = ({}) => {
             <input
               type="password"
               className="focus:border-purple-400 rounded-md border border-slate-600 bg-slate-700 py-3 px-4 text-slate-200 outline-none transition placeholder:text-slate-400"
-              placeholder="password"
+              placeholder="Password"
             />
-            <span className="w-full block text-right">
-              <Link
-                className="text-slate-300 hover:text-purple-400 transition underline underline-offset-4"
-                href="/forgot-pasword"
-              >
-                Forgot Password ?
-              </Link>
-            </span>
-            <button className="flex items-center justify-center gap-x-2 rounded-md border border-slate-600 bg-slate-700 py-3 px-4 text-slate-300 transition hover:text-purple-400">
+            <input
+              type="password"
+              className="focus:border-purple-400 rounded-md border border-slate-600 bg-slate-700 py-3 px-4 text-slate-200 outline-none transition placeholder:text-slate-400"
+              placeholder="Confirm Password"
+            />
+
+            <button className="flex items-center justify-center gap-x-2 rounded-md border border-slate-600 bg-slate-700 py-3 px-4 mt-3 text-slate-300 transition hover:text-purple-400">
               <svg
                 style={{ color: "rgb(203, 213, 225)" }}
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,16 +84,16 @@ const page: FC<pageProps> = ({}) => {
                   fill="#cbd5e1"
                 />
               </svg>
-              Sign in with Email
+              Register with Email
             </button>
           </div>
           <span className="text-slate-300 mt-5 mb-3 block">
-            Don&apos;t have an account ? &nbsp;
+            Already have an account ? &nbsp;
             <Link
               className="hover:text-purple-400 transition underline underline-offset-4"
-              href="/register"
+              href="/login"
             >
-              Register here
+              Login here
             </Link>
           </span>
         </form>
