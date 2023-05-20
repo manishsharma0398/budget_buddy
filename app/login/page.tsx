@@ -5,7 +5,7 @@ interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
-    <div className="grid h-screen w-screen place-items-center bg-slate-800 px-4 text-sm font-medium">
+    <div className="grid h-screen place-items-center bg-slate-800 px-4 text-sm font-medium">
       <div className="w-full max-w-md rounded-lg bg-slate-700/30 shadow">
         <form className="p-4 md:p-5 lg:p-6 text-white">
           <span className="block font-normal text-4xl mb-8 text-center">
