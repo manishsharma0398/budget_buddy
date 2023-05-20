@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import NavbarContextProvider from "./context/NavbarContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -17,12 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-slate-100 relative`}>
-        <Sidebar />
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <NavbarContextProvider>
+      <html lang="en">
+        <body className={`${inter.className} bg-slate-100 relative`}>
+          <Sidebar />
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </NavbarContextProvider>
   );
 }

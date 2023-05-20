@@ -1,9 +1,15 @@
+"use client";
 import Link from "next/link";
-import { FC } from "react";
+import { type FC, useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
+  const pathname = usePathname();
+  const { openSidebarAction } = useContext(NavbarContext);
+
   return (
     <nav className="sticky top-0 bg-white">
       <div className="container mx-auto p-4 flex justify-between items-center">
@@ -17,10 +23,15 @@ const Navbar: FC<NavbarProps> = ({}) => {
               />
             </svg>
           </Link>
-          <ul className="hidden md:flex md:items-center md:w-auto md:space-x-6">
+
+          <ul className="hidden md:flex md:items-center md:w-auto md:space-x-4">
             <li>
               <Link
-                className="text-sm text-gray-400 hover:text-gray-500"
+                className={`block px-4 py-2 text-sm font-semibold transition rounded ${
+                  pathname === "/"
+                    ? "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                    : "text-gray-400 bg-gray-50 hover:bg-blue-50 hover:text-blue-600"
+                }`}
                 href="/"
               >
                 Home
@@ -30,7 +41,10 @@ const Navbar: FC<NavbarProps> = ({}) => {
         </div>
 
         <div className="md:hidden">
-          <button className="navbar-burger flex items-center text-blue-600 p-3">
+          <button
+            onClick={openSidebarAction}
+            className="navbar-burger flex items-center text-blue-600 p-3"
+          >
             <svg
               className="block h-4 w-4 fill-current"
               viewBox="0 0 20 20"

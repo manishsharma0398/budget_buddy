@@ -1,16 +1,23 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import type { FC } from "react";
+import { type FC, useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
 
 interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = ({}) => {
   const pathname = usePathname();
+  const { closeSidebarAction, isSidebarOpen } = useContext(NavbarContext);
 
   return (
-    <div className="navbar-menu fixed z-50 hidden">
-      <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+    <div
+      className={`navbar-menu fixed z-50 ${isSidebarOpen ? "block" : "hidden"}`}
+    >
+      <div
+        onClick={closeSidebarAction}
+        className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"
+      ></div>
       <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
         <div className="flex items-center mb-8">
           <a className="mr-auto text-3xl font-bold leading-none" href="#">
@@ -22,7 +29,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
               />
             </svg>
           </a>
-          <button className="navbar-close">
+          <button onClick={closeSidebarAction} className="navbar-close">
             <svg
               className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
               xmlns="http://www.w3.org/2000/svg"
@@ -43,10 +50,10 @@ const Sidebar: FC<SidebarProps> = ({}) => {
           <ul>
             <li className="mb-1 rounded">
               <Link
-                className={`block p-4 text-sm font-semibold  hover:bg-blue-50 hover:text-blue-600 rounded ${
+                className={`block p-4 text-sm font-semibold rounded transition ${
                   pathname === "/"
-                    ? "bg-blue-50 text-blue-600"
-                    : "text-gray-400"
+                    ? "bg-blue-50 text-blue-600 hover:bg-blue-100"
+                    : "text-gray-400 hover:bg-blue-50 hover:text-blue-600"
                 }`}
                 href="/"
               >
